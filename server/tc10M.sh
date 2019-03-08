@@ -52,5 +52,5 @@ do
    /usr/sbin/tc qdisc add dev $EXTDEV parent 1:$i handle $i: sfq perturb 10
 done
 /usr/sbin/tc qdisc add dev $EXTDEV parent 1:255 handle 255: sfq perturb 10
-echo "`date` 成功执行了6M的限速策略"
+echo "`date` 成功执行了10M的限速策略"
 exit 0
