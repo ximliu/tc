@@ -1,5 +1,5 @@
 #!/bin/sh -x
-# 带宽设置,单位为kbits/s
+# 以下脚本文件用在服务器端，对于OPENVPN客户端的下载流量进行限速（即服务器端出流量），带宽单位为kbits/s
 #定义链路带宽
 LinkCeilDownSpeed=30000            #链路最大下载带宽
 LinkCeilUploadSpeed=30000          #链路最大上传带宽
@@ -18,18 +18,19 @@ OtherCeilUploadSpeed=6000           #其他用户最大上传带宽
 OtherRateDownSpeed=6000            #其他用户保障下载带宽
 OtherRateUploadSpeed=6000          #其他用户保障上传带宽
 
-# 定义限速网卡
+#定义限速网卡
 EXTDEV=tun0
 
-#定义VPN客户端地址前缀
+#定义VPN客户端地址前缀，
 vpn_address_pre=172.16.2
+#定义对多少个OPENVPN客户端IP进行限速，第一个为172.16.2.2 
 vpn_total_number=20
 
 # 清除接口上的队列及 mangle 表
 /usr/sbin/tc qdisc del dev $EXTDEV root    2> /dev/null > /dev/null
 
 #以下是上传限速
-#------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
 /usr/sbin/tc qdisc add dev $EXTDEV root handle 1: htb default 255
 #定义 class
 /usr/sbin/tc class add dev $EXTDEV parent 1: classid 1:1 htb rate ${LinkRateUploadSpeed}kbit ceil ${LinkCeilUploadSpeed}kbit
