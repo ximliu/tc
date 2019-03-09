@@ -1,4 +1,5 @@
 #!/bin/bash
+#监测 udp2raw_amd64是否正常运行，不运行则自动启动
 server1=`cat /root/mutiUDP2raw.sh | grep server1= | cut -f2 -d "'"`
 server2=`cat /root/mutiUDP2raw.sh | grep server2= | cut -f2 -d "'"`
 server3=`cat /root/mutiUDP2raw.sh | grep server3= | cut -f2 -d "'"`
