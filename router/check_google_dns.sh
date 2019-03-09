@@ -14,7 +14,7 @@ for ip in $(cat /root/checkAlive/ip_google_dns|sed "/^#/d")    #ip_list是当前
 done
      DATE=$(date +%F" "%H:%M)
      if [ $a -ne 0 -a $b -ne 0 -a $c -ne 0 ];then
-         echo -e "Date : $DATE\nHost : $ip\nProblem : Ping is failed." | mail -s "Ping google DNS Failed $ip failed From xinhulian_gateway" $MAIL
+         echo -e "Date : $DATE\nHost : $ip\nProblem : Ping is failed." | mail -s "Ping google DNS Failed $ip failed From gateway" $MAIL
      #else
      #    echo "$ip ping is successful."
      fi
