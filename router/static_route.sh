@@ -8,7 +8,7 @@ ip route add 192.168.10.0/24 via $CoreIP dev $LAN proto static metric 100 table 
 ip route add 192.168.11.0/24 via $CoreIP dev $LAN proto static metric 100 table 5
 ip route add 192.168.12.0/24 via $CoreIP dev $LAN proto static metric 100 table 5
 #为了保证网卡重启不丢失内网路由，需要在下面文件中添加内网路由
-#/etc/sysconfig/network-scripts/route-enp3s0
+#/etc/sysconfig/network-scripts/route-eth1
 
 #2、隔壁路由
 ip route add 192.168.50.0/24 $OLDGW  table 5
