@@ -19,16 +19,16 @@ ps -ef | grep udp2raw_amd64 | grep -v grep | awk '{print $2}' | xargs kill -9
 ps -ef | grep openvpn | grep -v grep | awk '{print $2}' | xargs kill -9
 #------------------------------------------------------------------------------------
 echo '启动第一阶段udp2raw'
-/root/udp2raw/udp2raw_amd64 -c -r$server1:50000 -l 127.0.0.1:1198 --raw-mode faketcp  -k huayu888 &
-/root/udp2raw/udp2raw_amd64 -c -r$server2:50000 -l 127.0.0.1:1199 --raw-mode faketcp  -k huayu888 &
+/root/udp2raw/udp2raw_amd64 -c -r$server1:50000 -l 127.0.0.1:1198 --raw-mode faketcp  -k udp2rawpassword &
+/root/udp2raw/udp2raw_amd64 -c -r$server2:50000 -l 127.0.0.1:1199 --raw-mode faketcp  -k udp2rawpassword &
 echo '启动openvpn客户端'
 /usr/sbin/openvpn /etc/openvpn/client/client.ovpn >/dev/null &
 echo '启动dnsmasq'
 echo 'nameserver 127.0.0.1' > /etc/resolv.conf
 systemctl restart dnsmasq
 echo '启动第二阶段udp2raw'
-/root/udp2raw/udp2raw_amd64 -c -r$server4:50000 -l 127.0.0.1:1120 --raw-mode faketcp -k huayu888 &
-/root/udp2raw/udp2raw_amd64 -c -r$server5:50000 -l 127.0.0.1:1121 --raw-mode faketcp -k huayu888 &
+/root/udp2raw/udp2raw_amd64 -c -r$server4:50000 -l 127.0.0.1:1120 --raw-mode faketcp -k udp2rawpassword &
+/root/udp2raw/udp2raw_amd64 -c -r$server5:50000 -l 127.0.0.1:1121 --raw-mode faketcp -k udp2rawpassword &
 sleep 5
 echo '启动第二阶段 openvpn客户端'
 /usr/sbin/openvpn /etc/openvpn/client/client2.ovpn >/dev/null &
