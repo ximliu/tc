@@ -3,30 +3,19 @@ OLDGW=$(ip route show 0/0 | sed -e 's/^default//')
 
 #1、内网路由
 LAN=enp3s0
-ip route add 192.168.70.0/24 via 192.168.63.2 dev $LAN proto static metric 100 table 5
-ip route add 192.168.71.0/24 via 192.168.63.2 dev $LAN proto static metric 100 table 5
-ip route add 192.168.72.0/24 via 192.168.63.2 dev $LAN proto static metric 100 table 5
-ip route add 192.168.73.0/24 via 192.168.63.2 dev $LAN proto static metric 100 table 5
-ip route add 192.168.74.0/24 via 192.168.63.2 dev $LAN proto static metric 100 table 5
-ip route add 192.168.75.0/24 via 192.168.63.2 dev $LAN proto static metric 100 table 5
+CoreIP=192.168.63.2
+ip route add 192.168.10.0/24 via $CoreIP dev $LAN proto static metric 100 table 5
+ip route add 192.168.11.0/24 via $CoreIP dev $LAN proto static metric 100 table 5
+ip route add 192.168.12.0/24 via $CoreIP dev $LAN proto static metric 100 table 5
 #为了保证网卡重启不丢失内网路由，需要在下面文件中添加内网路由
 #/etc/sysconfig/network-scripts/route-enp3s0
 
-#2、隔壁路由  --  505房间地址
+#2、隔壁路由
 ip route add 192.168.50.0/24 $OLDGW  table 5
 ip route add 192.168.55.0/24 $OLDGW  table 5
 ip route add 192.168.56.0/24 $OLDGW  table 5
-ip route add 192.168.57.0/24 $OLDGW  table 5
-ip route add 192.168.58.0/24 $OLDGW  table 5
-ip route add 192.168.59.0/24 $OLDGW  table 5
-ip route add 192.168.60.0/24 $OLDGW  table 5
-ip route add 192.168.61.0/24 $OLDGW  table 5
-ip route add 192.168.62.0/24 $OLDGW  table 5
-ip route add 192.168.64.0/24 $OLDGW  table 5
-ip route add 192.168.2.0/24 $OLDGW  table 5
-ip route add 172.16.62.0/24 $OLDGW  table 5
 
-#3、集团路由  --  烟台地址段
+#3、集团路由
 ip route add 192.168.0.0/19 $OLDGW  table 5
 
 #4、VPN服务器路由
