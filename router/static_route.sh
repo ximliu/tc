@@ -2,8 +2,8 @@
 OLDGW=$(ip route show 0/0 | sed -e 's/^default//')
 
 #1、内网路由
-LAN=enp3s0
-CoreIP=192.168.63.2
+LAN=eth1
+CoreIP=172.16.1.2
 ip route add 192.168.10.0/24 via $CoreIP dev $LAN proto static metric 100 table 5
 ip route add 192.168.11.0/24 via $CoreIP dev $LAN proto static metric 100 table 5
 ip route add 192.168.12.0/24 via $CoreIP dev $LAN proto static metric 100 table 5
@@ -16,7 +16,7 @@ ip route add 192.168.55.0/24 $OLDGW  table 5
 ip route add 192.168.56.0/24 $OLDGW  table 5
 
 #3、集团路由
-ip route add 192.168.0.0/19 $OLDGW  table 5
+ip route add 192.168.0.0/24 $OLDGW  table 5
 
 #4、VPN服务器路由
 server1=`cat /root/mutiUDP2raw.sh | grep server1= | cut -f2 -d "'"`
