@@ -22,8 +22,8 @@ OtherRateUploadSpeed=10240          #其他用户保障上传带宽
 EXTDEV=tun0
 
 #定义VPN客户端地址前缀，
-vpn_address_pre=172.16.2
-#定义对多少个OPENVPN客户端IP进行限速，第一个为172.16.2.2 
+vpn_address_pre=10.8.0
+#定义对多少个OPENVPN客户端IP进行限速，第一个为10.8.0.2 
 vpn_total_number=20
 
 # 清除接口上的队列及 mangle 表
