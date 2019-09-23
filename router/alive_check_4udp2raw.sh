@@ -5,10 +5,10 @@ server2=`cat /root/mutiUDP2raw.sh | grep server2= | cut -f2 -d "'"`
 server3=`cat /root/mutiUDP2raw.sh | grep server3= | cut -f2 -d "'"`
 server4=`cat /root/mutiUDP2raw.sh | grep server4= | cut -f2 -d "'"`
 server5=`cat /root/mutiUDP2raw.sh | grep server5= | cut -f2 -d "'"`
-ps1="/root/udp2raw/udp2raw_amd64 -c -r$server1:50000 -l 127.0.0.1:1198 --raw-mode faketcp -k udp2rawpassword"
-ps2="/root/udp2raw/udp2raw_amd64 -c -r$server2:50000 -l 127.0.0.1:1199 --raw-mode faketcp -k udp2rawpassword"
-ps3="/root/udp2raw/udp2raw_amd64 -c -r$server4:50000 -l 127.0.0.1:1120 --raw-mode faketcp -k udp2rawpassword"
-ps4="/root/udp2raw/udp2raw_amd64 -c -r$server5:50000 -l 127.0.0.1:1121 --raw-mode faketcp -k udp2rawpassword"
+ps1="/root/udp2raw/udp2raw_amd64 -c -r$server1:50000 -l 127.0.0.1:1198 --raw-mode faketcp -k udp2rawpassword --fix-gro"
+ps2="/root/udp2raw/udp2raw_amd64 -c -r$server2:50000 -l 127.0.0.1:1199 --raw-mode faketcp -k udp2rawpassword --fix-gro"
+ps3="/root/udp2raw/udp2raw_amd64 -c -r$server4:50000 -l 127.0.0.1:1120 --raw-mode faketcp -k udp2rawpassword --fix-gro"
+ps4="/root/udp2raw/udp2raw_amd64 -c -r$server5:50000 -l 127.0.0.1:1121 --raw-mode faketcp -k udp2rawpassword --fix-gro"
 
 PROC=("$ps1" "$ps2" "$ps3" "$ps4")
 for p in "${PROC[@]}"
