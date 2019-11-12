@@ -1,6 +1,6 @@
 #!/bin/bash
-MAIL="71764912@qq.com"
-MAIL2="zcm8483@163.com"
+MAIL="your_email1@qq.com"
+MAIL2="your_email2@163.com"
 Client="Client_name"
 DATE=$(date +%F" "%H:%M)
 COUNT=`cat /root/checkAlive/count.txt`
