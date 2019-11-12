@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 OLDGW=$(ip route show 0/0 | sed -e 's/^default//')
 #苹果
 ip route add 17.128.0.0/9 $OLDGW table 15
