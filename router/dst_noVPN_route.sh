@@ -22,3 +22,9 @@ ip route add 40.100.0.0/16 $OLDGW table 15
 
 #microsoft
 ip route add 52.96.0.0/12 $OLDGW table 15
+
+#akamai
+ip route add 23.42.224.0/20 $OLDGW table 15
+
+#aliyun_hk
+ip route add 47.56.38.0/24  $OLDGW table 15
