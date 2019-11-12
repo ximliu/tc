@@ -1,3 +1,5 @@
+#!/bin/bash
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 #添加固定路由
 OLDGW=$(ip route show 0/0 | sed -e 's/^default//')
 
