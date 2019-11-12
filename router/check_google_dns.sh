@@ -1,8 +1,9 @@
 #!/bin/bash
-MAIL="bagabu@163.com"
+MAIL="71764912@qq.com"
 MAIL2="zcm8483@163.com"
-Client="在这里输入用户名称"
+Client="Client_name"
 DATE=$(date +%F" "%H:%M)
+COUNT=`cat /root/checkAlive/count.txt`
 
 #连接数监测
 Current_conn=`cat /proc/sys/net/netfilter/nf_conntrack_count`
@@ -30,8 +31,17 @@ AvgRtt=$(echo $ping_result | grep rtt | awk -F '/' '{printf $5}' | awk -F '.' '{
 if [ $packet -ge 20 ]
 then
    echo -e "$DATE $Client ping google 当前丢包率为% $packet，请立刻检查服务器是否有异常" | mail -s "$Client ping谷歌丢包率为% $packet" -c $MAIL $MAIL2
+   ((COUNT++))
+   echo $COUNT > /root/checkAlive/count.txt
+   if [ $COUNT -ge 3 ]
+   then
+                /root/mutiUDP2raw.sh >> /var/log/udp2raw.log
+                echo "$DATE 检测程序检测到3次丢包率大于20，程序自动重启udp2raw 程序" >> /var/log/udp2raw.log
+        fi
+else
+        echo '0' > /root/checkAlive/count.txt
 fi
-if [ $AvgRtt -ge 150 ]
+if [ $AvgRtt -ge 350 ]
 then
    echo -e "$DATE $Client ping google 当前平均延时为$AvgRtt ms，请立刻检查服务器是否有异常" | mail -s "$Client ping谷歌延时为$AvgRtt ms" -c $MAIL $MAIL2
 fi
