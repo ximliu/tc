@@ -7,6 +7,7 @@ if [ $route_length == 0 ]
 then
    echo -e "$DATE $Client Table 10 国内路由丢失" >> /var/log/VpnServer.log
    /root/chnroutes/vpn-up.sh
+   /root/mutiUDP2raw.sh
 #else
 #   echo "路由正常"
 fi
