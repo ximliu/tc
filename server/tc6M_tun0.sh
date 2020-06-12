@@ -21,9 +21,9 @@ OtherRateUploadSpeed=29000          #其他用户保障上传带宽
 #新定义客户带宽
 speed29m=29000
 speed24m=24000
-speed8m=8000
-speed4m=4000
-speed3m=3000
+speed8m=8200
+speed4m=4200
+speed3m=3200
 speed2_5m=2500
 
 
