@@ -22,6 +22,7 @@ OtherRateUploadSpeed=29000          #其他用户保障上传带宽
 speed29m=29000
 speed24m=24000
 speed8m=8200
+speed16m=16000
 speed4m=4200
 speed3m=3200
 speed2_5m=2500
@@ -33,7 +34,7 @@ EXTDEV=tun0
 #定义VPN客户端地址前缀，
 vpn_address_pre=10.8.0
 #定义对多少个OPENVPN客户端IP进行限速，第一个为10.8.0.2 
-vpn_total_number=27
+vpn_total_number=33
 
 # 清除接口上的队列及 mangle 表
 /usr/sbin/tc qdisc del dev $EXTDEV root    2> /dev/null > /dev/null
@@ -44,64 +45,82 @@ vpn_total_number=27
 #定义 class
 /usr/sbin/tc class add dev $EXTDEV parent 1: classid 1:1 htb rate ${LinkRateUploadSpeed}kbit ceil ${LinkCeilUploadSpeed}kbit
 
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:2 htb rate ${speed29m}kbit ceil ${speed29m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:3 htb rate ${speed29m}kbit ceil ${speed29m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:4 htb rate ${speed29m}kbit ceil ${speed29m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:5 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+#home
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:6 htb rate ${speed29m}kbit ceil ${speed29m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:7 htb rate ${speed29m}kbit ceil ${speed29m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:8 htb rate ${speed24m}kbit ceil ${speed24m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:9 htb rate ${speed24m}kbit ceil ${speed24m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:10 htb rate ${speed8m}kbit ceil ${speed8m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:11 htb rate ${speed8m}kbit ceil ${speed8m}kbit
+#dx
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:8 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:9 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+#hunan
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:10 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:11 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+#505
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:12 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:13 htb rate ${speed8m}kbit ceil ${speed8m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:14 htb rate ${speed4m}kbit ceil ${speed4m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:15 htb rate ${speed4m}kbit ceil ${speed4m}kbit
+#506
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:14 htb rate ${speed8m}kbit ceil ${speed8m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:15 htb rate ${speed8m}kbit ceil ${speed8m}kbit
+#tky
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:16 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:17 htb rate ${speed8m}kbit ceil ${speed8m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:18 htb rate ${speed3m}kbit ceil ${speed3m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:19 htb rate ${speed3m}kbit ceil ${speed3m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:20 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:21 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:22 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:23 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+#yibixi
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:18 htb rate ${speed4m}kbit ceil ${speed4m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:19 htb rate ${speed4m}kbit ceil ${speed4m}kbit
+#sdxh
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:20 htb rate ${speed3m}kbit ceil ${speed3m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:21 htb rate ${speed3m}kbit ceil ${speed3m}kbit
+#tjty
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:22 htb rate ${speed3m}kbit ceil ${speed3m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:23 htb rate ${speed3m}kbit ceil ${speed3m}kbit
+#liaoly
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:24 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:25 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+#zhangzhao
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:26 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:27 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+#sdtdlt
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:28 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:29 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+#xzshouyou
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:30 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:31 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+#ganjin
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:32 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:33 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:255 htb rate ${OtherRateUploadSpeed}kbit ceil ${OtherCeilUploadSpeed}kbit
 
 #定义匹配VPN客户端地址
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.6 flowid 1:2
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.7 flowid 1:3
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.8 flowid 1:4
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.9 flowid 1:5
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.10 flowid 1:6
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.11 flowid 1:7
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.12 flowid 1:8
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.13 flowid 1:9
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.14 flowid 1:10
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.15 flowid 1:11
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.16 flowid 1:12
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.17 flowid 1:13
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.18 flowid 1:14
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.19 flowid 1:15
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.20 flowid 1:16
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.21 flowid 1:17
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.22 flowid 1:18
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.23 flowid 1:19
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.24 flowid 1:20
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.25 flowid 1:21
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.26 flowid 1:22
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.27 flowid 1:23
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.28 flowid 1:24
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.29 flowid 1:25
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.30 flowid 1:26
-/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.31 flowid 1:27
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.6 flowid 1:6
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.7 flowid 1:7
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.8 flowid 1:8
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.9 flowid 1:9
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.10 flowid 1:10
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.11 flowid 1:11
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.12 flowid 1:12
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.13 flowid 1:13
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.14 flowid 1:14
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.15 flowid 1:15
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.16 flowid 1:16
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.17 flowid 1:17
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.18 flowid 1:18
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.19 flowid 1:19
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.20 flowid 1:20
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.21 flowid 1:21
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.22 flowid 1:22
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.23 flowid 1:23
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.24 flowid 1:24
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.25 flowid 1:25
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.26 flowid 1:26
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.27 flowid 1:27
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.28 flowid 1:28
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.29 flowid 1:29
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.30 flowid 1:30
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.31 flowid 1:31
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.32 flowid 1:32
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.33 flowid 1:33
 
 #定义队列
-for((i = 2; i <= $vpn_total_number; i++))
+for((i = 6; i <= $vpn_total_number; i++))
 do
    /usr/sbin/tc qdisc add dev $EXTDEV parent 1:$i handle $i: sfq perturb 10
 done
