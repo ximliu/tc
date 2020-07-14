@@ -55,8 +55,8 @@ vpn_total_number=33
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:10 htb rate ${speed29m}kbit ceil ${speed29m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:11 htb rate ${speed29m}kbit ceil ${speed29m}kbit
 #505
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:12 htb rate ${speed8m}kbit ceil ${speed8m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:13 htb rate ${speed8m}kbit ceil ${speed8m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:12 htb rate ${speed16m}kbit ceil ${speed16m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:13 htb rate ${speed16m}kbit ceil ${speed16m}kbit
 #506
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:14 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:15 htb rate ${speed8m}kbit ceil ${speed8m}kbit
