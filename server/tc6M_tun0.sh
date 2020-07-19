@@ -21,11 +21,15 @@ OtherRateUploadSpeed=29000          #其他用户保障上传带宽
 #新定义客户带宽
 speed29m=29000
 speed24m=24000
-speed8m=8200
 speed16m=16000
-speed4m=4200
-speed3m=3200
+speed8m=8000
+speed6m=6000
+speed5m=5000
+speed4m=4000
+speed3m=3000
 speed2_5m=2500
+speed2m=2000
+speed1m=1000
 
 
 #定义限速网卡
@@ -67,8 +71,8 @@ vpn_total_number=33
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:18 htb rate ${speed4m}kbit ceil ${speed4m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:19 htb rate ${speed4m}kbit ceil ${speed4m}kbit
 #sdxh
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:20 htb rate ${speed8m}kbit ceil ${speed8m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:21 htb rate ${speed8m}kbit ceil ${speed8m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:20 htb rate ${speed3m}kbit ceil ${speed3m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:21 htb rate ${speed3m}kbit ceil ${speed3m}kbit
 #tjty
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:22 htb rate ${speed3m}kbit ceil ${speed3m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:23 htb rate ${speed3m}kbit ceil ${speed3m}kbit
