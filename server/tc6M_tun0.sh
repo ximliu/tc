@@ -38,7 +38,7 @@ EXTDEV=tun0
 #定义VPN客户端地址前缀，
 vpn_address_pre=10.8.0
 #定义对多少个OPENVPN客户端IP进行限速，第一个为10.8.0.2 
-vpn_total_number=33
+vpn_total_number=35
 
 # 清除接口上的队列及 mangle 表
 /usr/sbin/tc qdisc del dev $EXTDEV root    2> /dev/null > /dev/null
@@ -91,6 +91,9 @@ vpn_total_number=33
 #ganjin
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:32 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:33 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+#shandong_xinhulian
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:34 htb rate ${speed2m}kbit ceil ${speed2m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:35 htb rate ${speed2m}kbit ceil ${speed2m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:255 htb rate ${OtherRateUploadSpeed}kbit ceil ${OtherCeilUploadSpeed}kbit
 
 #定义匹配VPN客户端地址
@@ -122,6 +125,8 @@ vpn_total_number=33
 /usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.31 flowid 1:31
 /usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.32 flowid 1:32
 /usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.33 flowid 1:33
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.34 flowid 1:34
+/usr/sbin/tc filter add dev $EXTDEV protocol ip parent 1:0 prio 1 u32 match ip dst 10.8.0.35 flowid 1:35
 
 #定义队列
 for((i = 6; i <= $vpn_total_number; i++))
