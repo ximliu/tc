@@ -91,7 +91,7 @@ vpn_total_number=35
 #ganjin
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:32 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:33 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-#shandong_xinhulian
+#shandong_xhl
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:34 htb rate ${speed2m}kbit ceil ${speed2m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:35 htb rate ${speed2m}kbit ceil ${speed2m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:255 htb rate ${OtherRateUploadSpeed}kbit ceil ${OtherCeilUploadSpeed}kbit
