@@ -79,9 +79,9 @@ vpn_total_number=35
 #liaoly
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:24 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:25 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-#zhangzhao
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:26 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:27 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+#hangzhou_xhl
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:26 htb rate ${speed1m}kbit ceil ${speed1m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:27 htb rate ${speed1m}kbit ceil ${speed1m}kbit
 #sdtdlt
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:28 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:29 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
@@ -92,8 +92,8 @@ vpn_total_number=35
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:32 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:33 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
 #shandong_xhl
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:34 htb rate ${speed2m}kbit ceil ${speed2m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:35 htb rate ${speed2m}kbit ceil ${speed2m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:34 htb rate ${speed1m}kbit ceil ${speed1m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:35 htb rate ${speed1m}kbit ceil ${speed1m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:255 htb rate ${OtherRateUploadSpeed}kbit ceil ${OtherCeilUploadSpeed}kbit
 
 #定义匹配VPN客户端地址
