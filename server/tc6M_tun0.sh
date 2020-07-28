@@ -23,6 +23,7 @@ speed29m=29000
 speed24m=24000
 speed16m=16000
 speed8m=8000
+speed7m=7000
 speed6m=6000
 speed5m=5000
 speed4m=4000
@@ -62,8 +63,8 @@ vpn_total_number=35
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:12 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:13 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 #506
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:14 htb rate ${speed8m}kbit ceil ${speed8m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:15 htb rate ${speed8m}kbit ceil ${speed8m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:14 htb rate ${speed7m}kbit ceil ${speed7m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:15 htb rate ${speed7m}kbit ceil ${speed7m}kbit
 #tky
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:16 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:17 htb rate ${speed8m}kbit ceil ${speed8m}kbit
