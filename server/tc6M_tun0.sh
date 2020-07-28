@@ -15,8 +15,8 @@ UserRateUploadSpeed=29000      #特殊用户保障上传带宽
 #定义其他用户的最大带宽合保障带宽
 OtherCeilDownSpeed=29000             #其他用户最大下载带宽
 OtherCeilUploadSpeed=29000           #其他用户最大上传带宽
-OtherRateDownSpeed=29000            #其他用户保障下载带宽
-OtherRateUploadSpeed=29000          #其他用户保障上传带宽
+OtherRateDownSpeed=3000            #其他用户保障下载带宽
+OtherRateUploadSpeed=3000          #其他用户保障上传带宽
 
 #新定义客户带宽
 speed29m=29000
@@ -51,14 +51,14 @@ vpn_total_number=35
 /usr/sbin/tc class add dev $EXTDEV parent 1: classid 1:1 htb rate ${LinkRateUploadSpeed}kbit ceil ${LinkCeilUploadSpeed}kbit
 
 #home
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:6 htb rate ${speed29m}kbit ceil ${speed29m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:7 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:6 htb rate ${speed16m}kbit ceil ${speed16m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:7 htb rate ${speed16m}kbit ceil ${speed16m}kbit
 #dx
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:8 htb rate ${speed29m}kbit ceil ${speed29m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:9 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:8 htb rate ${speed16m}kbit ceil ${speed16m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:9 htb rate ${speed16m}kbit ceil ${speed16m}kbit
 #hunan
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:10 htb rate ${speed29m}kbit ceil ${speed29m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:11 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:10 htb rate ${speed16m}kbit ceil ${speed16m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:11 htb rate ${speed16m}kbit ceil ${speed16m}kbit
 #505
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:12 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:13 htb rate ${speed8m}kbit ceil ${speed8m}kbit
@@ -78,20 +78,20 @@ vpn_total_number=35
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:22 htb rate ${speed3m}kbit ceil ${speed3m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:23 htb rate ${speed3m}kbit ceil ${speed3m}kbit
 #liaoly
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:24 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:25 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:24 htb rate ${speed2m}kbit ceil ${speed2m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:25 htb rate ${speed2m}kbit ceil ${speed2m}kbit
 #hangzhou_xhl
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:26 htb rate ${speed1m}kbit ceil ${speed1m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:27 htb rate ${speed1m}kbit ceil ${speed1m}kbit
 #sdtdlt
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:28 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:29 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:28 htb rate ${speed2m}kbit ceil ${speed2m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:29 htb rate ${speed2m}kbit ceil ${speed2m}kbit
 #xzshouyou
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:30 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:31 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:30 htb rate ${speed2m}kbit ceil ${speed2m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:31 htb rate ${speed2m}kbit ceil ${speed2m}kbit
 #ganjin
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:32 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:33 htb rate ${speed2_5m}kbit ceil ${speed2_5m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:32 htb rate ${speed2m}kbit ceil ${speed2m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:33 htb rate ${speed2m}kbit ceil ${speed2m}kbit
 #shandong_xhl
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:34 htb rate ${speed1m}kbit ceil ${speed1m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:35 htb rate ${speed1m}kbit ceil ${speed1m}kbit
