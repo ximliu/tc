@@ -22,6 +22,7 @@ OtherRateUploadSpeed=3000          #其他用户最大上传带宽
 speed29m=29000
 speed24m=24000
 speed16m=16000
+speed12m=12000
 speed8m=8000
 speed7m=7000
 speed6m=6000
@@ -51,14 +52,14 @@ vpn_total_number=35
 /usr/sbin/tc class add dev $EXTDEV parent 1: classid 1:1 htb rate ${LinkRateUploadSpeed}kbit ceil ${LinkCeilUploadSpeed}kbit
 
 #home
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:6 htb rate ${speed16m}kbit ceil ${speed16m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:7 htb rate ${speed16m}kbit ceil ${speed16m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:6 htb rate ${speed12m}kbit ceil ${speed12m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:7 htb rate ${speed12m}kbit ceil ${speed12m}kbit
 #dx
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:8 htb rate ${speed16m}kbit ceil ${speed16m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:9 htb rate ${speed16m}kbit ceil ${speed16m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:8 htb rate ${speed8m}kbit ceil ${speed8m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:9 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 #hunan
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:10 htb rate ${speed16m}kbit ceil ${speed16m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:11 htb rate ${speed16m}kbit ceil ${speed16m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:10 htb rate ${speed8m}kbit ceil ${speed8m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:11 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 #505
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:12 htb rate ${speed8m}kbit ceil ${speed8m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:13 htb rate ${speed8m}kbit ceil ${speed8m}kbit
