@@ -15,8 +15,8 @@ UserRateUploadSpeed=29000      #特殊用户保障上传带宽
 #定义其他用户的最大带宽合保障带宽
 OtherCeilDownSpeed=29000             #其他用户最大下载带宽
 OtherCeilUploadSpeed=29000           #其他用户最大上传带宽
-OtherRateDownSpeed=3000            #其他用户保障下载带宽
-OtherRateUploadSpeed=3000          #其他用户保障上传带宽
+OtherRateDownSpeed=3000            #其他用户最大下载带宽
+OtherRateUploadSpeed=3000          #其他用户最大上传带宽
 
 #新定义客户带宽
 speed29m=29000
