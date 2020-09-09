@@ -98,8 +98,8 @@ vpn_total_number=35
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:34 htb rate ${speed3m}kbit ceil ${speed3m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:35 htb rate ${speed3m}kbit ceil ${speed3m}kbit
 #hz01.rexen.net
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:34 htb rate ${speed29m}kbit ceil ${speed29m}kbit
-/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:35 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:36 htb rate ${speed29m}kbit ceil ${speed29m}kbit
+/usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:37 htb rate ${speed29m}kbit ceil ${speed29m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:255 htb rate ${OtherRateUploadSpeed}kbit ceil ${OtherCeilUploadSpeed}kbit
 
 #定义匹配VPN客户端地址
