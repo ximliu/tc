@@ -100,7 +100,7 @@ vpn_total_number=39
 #hz01.rexen.net
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:36 htb rate ${speed29m}kbit ceil ${speed29m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:37 htb rate ${speed29m}kbit ceil ${speed29m}kbit
-#hz01.rexen.net
+#hz02.rexen.net
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:38 htb rate ${speed29m}kbit ceil ${speed29m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:38 htb rate ${speed29m}kbit ceil ${speed29m}kbit
 /usr/sbin/tc class add dev $EXTDEV parent 1:1 classid 1:255 htb rate ${OtherRateUploadSpeed}kbit ceil ${OtherCeilUploadSpeed}kbit
