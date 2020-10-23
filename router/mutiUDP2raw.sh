@@ -1,14 +1,13 @@
+#!/bin/bash
+export PATH="/bin:/sbin:/usr/sbin:/usr/bin"
 sleep 1
 #
 server1='1.1.1.1'
 server2='2.2.2.2'
-server3='3.3.3.3'
-server4='4.4.4.4'
-server5='5.5.5.5'
 OLDGW=$(ip route show 0/0 | sed -e 's/^default//')
 #------------------------------------------------------------------------------------
 #udp2raw需要做的
-ServerList=("$server1" "$server2" "$server3" "$server4" "$server5")
+ServerList=("$server1" "$server2")
 for p in "${ServerList[@]}"
 do
         iptables -D INPUT -s $p -p tcp -m tcp --sport 50000 -j DROP
@@ -21,28 +20,14 @@ ps -ef | grep openvpn | grep -v grep | awk '{print $2}' | xargs kill -9
 echo '增加服务器去往国内路由到table 5'
 ip route add $server1 $OLDGW  table 5
 ip route add $server2 $OLDGW  table 5
-ip route add $server3 $OLDGW  table 5
-ip route add $server4 $OLDGW  table 5
-ip route add $server5 $OLDGW  table 5
+
 echo '启动第一阶段udp2raw'
-/root/udp2raw/udp2raw_amd64 -c -r$server1:50000 -l 127.0.0.1:1198 --raw-mode faketcp  -k udp2rawpassword &
-/root/udp2raw/udp2raw_amd64 -c -r$server2:50000 -l 127.0.0.1:1199 --raw-mode faketcp  -k udp2rawpassword &
+/root/udp2raw/udp2raw_amd64 -c -r$server1:50000 -l 127.0.0.1:1198 --raw-mode faketcp -k udp2rawpassword &
+/root/udp2raw/udp2raw_amd64 -c -r$server2:50000 -l 127.0.0.1:1199 --raw-mode faketcp -k udp2rawpassword &
 echo '启动openvpn客户端'
 /usr/sbin/openvpn /etc/openvpn/client/client.ovpn >/dev/null &
 echo '启动dnsmasq'
 echo 'nameserver 127.0.0.1' > /etc/resolv.conf
 systemctl restart dnsmasq
-echo '启动第二阶段udp2raw'
-/root/udp2raw/udp2raw_amd64 -c -r$server4:50000 -l 127.0.0.1:1120 --raw-mode faketcp -k udp2rawpassword &
-/root/udp2raw/udp2raw_amd64 -c -r$server5:50000 -l 127.0.0.1:1121 --raw-mode faketcp -k udp2rawpassword &
-sleep 5
-echo '启动第二阶段 openvpn客户端'
-/usr/sbin/openvpn /etc/openvpn/client/client2.ovpn >/dev/null &
-sleep 6
-#确定哪些地址走第二阶段
-#ip rule add from 192.168.74.0/24 table 20 pri 20
-#tun1 的默认路由到openvpn服务器
-/usr/sbin/ip route add default via 172.16.2.1 dev tun1 table 20
-#
 echo '执行完成'
 echo "`date` 重新启动了mutiUDP2raw.sh " >> /var/log/udp2raw.log
